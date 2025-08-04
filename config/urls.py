@@ -28,3 +28,4 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/status/', budget_status),
 ]
+
