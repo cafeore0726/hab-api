@@ -16,8 +16,16 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from kakeibo.views import RecordViewSet, budget_status
+
+router = DefaultRouter()
+router.register(r'records', RecordViewSet)
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('api/status/', budget_status),
 ]
+
